@@ -1,7 +1,7 @@
 import axios from "axios";
 import { deleteCookie } from ".";
 import toast from "react-hot-toast";
-import { BASE_URL } from "@/constants/ENVIRONMENT_VARIABLES";
+import { BASE_URL, ACCESS_TOKEN } from "@/constants/ENVIRONMENT_VARIABLES";
 
 export const AXIOS_CLIENT = axios.create({
   baseURL: BASE_URL,
@@ -12,7 +12,7 @@ export const AXIOS_CLIENT = axios.create({
 
 AXIOS_CLIENT.interceptors.request.use(
   (config) => {
-    const token = "asdf";
+    const token = ACCESS_TOKEN;
     if (token) {
       config.headers["Authorization"] = "Bearer " + token;
     }

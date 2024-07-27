@@ -18,6 +18,7 @@ import Typography from "@mui/material/Typography";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { usePathname } from "next/navigation";
 import "./style.css";
+import { P_M_TODO_0 } from "@/constants/ROUTES";
 
 const SideMenu = () => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -149,7 +150,7 @@ const SideMenu = () => {
           <img src="image/menuSElect.png" alt="" />
           <ul className="subMainSideMenu">
             <li className="subSideMenu">
-              <Link prefetch href="/P_M_Todo0">
+              <Link prefetch href={P_M_TODO_0}>
                 Calendar
               </Link>
             </li>

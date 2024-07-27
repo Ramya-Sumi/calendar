@@ -26,6 +26,7 @@ const createAsyncThunkHandler = (apiFunction, propName, onLoginSuccess?) =>
     try {
       // Call the API function with provided data
       let response;
+      console.log(response)
       if (data) {
         response = await apiFunction(data);
       } else {

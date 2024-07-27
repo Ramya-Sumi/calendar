@@ -38,7 +38,7 @@ function HeadersTop() {
 
   useEffect(() => {
     dispatch(getNotifications())
-  }, [])
+  }, [dispatch])
   const handleLogout = async () => {
     let data = {
       "refresh_token": dashboardData?.login?.refresh_token

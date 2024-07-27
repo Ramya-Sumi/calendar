@@ -4,7 +4,7 @@ import { AXIOS_CLIENT } from "@/utils/AXIOS_CLIENT";
 const makeRequest = async (endpoint, data, method = "post") => {
   try {
     let response = await AXIOS_CLIENT[method](endpoint, data);
-
+console.log(response);
     let result = await response?.data;
 
     if (result) {
@@ -108,19 +108,3 @@ export const LOGOUT_API = ({ data }) =>
 export const USER_ACCOUNT_MANAGEMENT_ACCOUNT_API = () =>
   makeRequest(API_ENDPOINTS.USER_ACCOUNT_MANAGEMENT_ACCOUNT, null, "get");
 
-export const INVENTORY_ASSETS_API = () =>
-  makeRequest(
-    API_ENDPOINTS.INVENTORY_ASSETS,
-    {
-      filter_by: "all",
-    },
-    "get"
-  );
-
-export const NOTIFICATIONS_API = () =>
-  makeRequest(API_ENDPOINTS.NOTIFICATIONS_ENDPOINT, {
-    filter_by: "Not Read",
-  });
-
-export const GET_COUNTRIES_API = () =>
-  makeRequest(API_ENDPOINTS.COUNTRY_LIST_ENDPOINT, null, "get");

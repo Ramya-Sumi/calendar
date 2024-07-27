@@ -1,4 +1,3 @@
-
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -13,7 +12,6 @@ import {
 
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
-
 import InputBase from "@mui/material/InputBase";
 
 const Search = styled("div")(({ theme }) => ({
@@ -46,7 +44,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -68,7 +65,7 @@ function HeaderSearch() {
     setOpen(false);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilterText(event.target.value);
   };
 
@@ -97,8 +94,6 @@ function HeaderSearch() {
     item.toLowerCase().includes(filterText.toLowerCase())
   );
 
-  // modal end code
-
   const [anchorEl, setOneMenu] = React.useState<null | HTMLElement>(null);
   const [mobileMore, setMobileMore] =
     React.useState<null | HTMLElement>(null);
@@ -109,25 +104,21 @@ function HeaderSearch() {
     setNotification(event.currentTarget);
   };
 
-
-
-
   return (
     <>
       <Search
-              onClick={handleOpen}
-              className="ms-5 text-gray md:w-[400px]"
-            >
-
-              <StyledInputBase
-                className="md:w-[400px]  headerSearchTop"
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-              <SearchIconWrapper className="end-3 top-0 pe-0 text-blue">
-                <i className="fa fa-search"></i>
-              </SearchIconWrapper>
-            </Search>
+        onClick={handleOpen}
+        className="ms-5 text-gray md:w-[400px]"
+      >
+        <StyledInputBase
+          className="md:w-[400px]  headerSearchTop"
+          placeholder="Search…"
+          inputProps={{ "aria-label": "search" }}
+        />
+        <SearchIconWrapper className="end-3 top-0 pe-0 text-blue">
+          <i className="fa fa-search"></i>
+        </SearchIconWrapper>
+      </Search>
 
       <Modal
         open={open}
@@ -174,10 +165,10 @@ function HeaderSearch() {
           </h5>
           <hr className="mt-0" />
           <div className="position-relative headerInput px-3 my-2">
-            <input
+            <TextField
               onChange={handleChange}
               variant="outlined"
-              className="form-control border-1 rouned-2 shadow-sm"
+              className="form-control border-1 rounded-2 shadow-sm"
               type="text"
               placeholder="Search your Data"
             />

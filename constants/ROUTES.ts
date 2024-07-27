@@ -12,18 +12,8 @@ export const JOB_APPLICATION_0 = "/dashboardx/JobApplication0";
 export const LOGIN = "/login";
 export const HOME = "/";
 export const P_M_ACTIVITY = "/dashboardx/P_M_Activity";
-export const P_M_HELP_DESK_SUPPORT = "/dashboardx/P_M_HelpDeskSupport";
-export const P_M_JOB_DESCRIPTIONS1 = "/dashboardx/P_M_JobDescriptions1";
-export const P_M_JOB_DESCRIPTIONS2 = "/dashboardx/P_M_JobDescriptions2";
-export const P_M_JOB_DESCRIPTIONS3 = "/dashboardx/P_M_JobDescriptions3";
-export const P_M_JOB_DESCRIPTIONS4 = "/dashboardx/P_M_JobDescriptions4";
-export const P_M_JOB_DESCRIPTIONS5 = "/dashboardx/P_M_JobDescriptions5";
-export const P_M_JOB_DESCRIPTIONS6 = "/dashboardx/P_M_JobDescriptions6";
-export const P_M_JOB_DESCRIPTIONS9 = "/dashboardx/P_M_JobDescriptions9";
-export const P_M_JOB_DESCRIPTIONS10 = "/dashboardx/P_M_JobDescriptions10";
-export const P_M_JOB_DESCRIPTIONS_FOUR = "/dashboardx/P_M_JobDescriptionsFour";
-export const P_M_JOB_DESCRIPTIONS_ONE = "/dashboardx/P_M_JobDescriptionsOne";
-export const P_M_JOB_DESCRIPTIONS_TWO = "/dashboardx/P_M_JobDescriptionsTwo";
+
+
 export const P_M_MESSAGES = "/dashboardx/P_M_Messages";
 export const P_M_NOTIFICATIONS = "/dashboardx/P_M_Notifications";
 export const P_M_PROFILE = "/dashboardx/P_M_Profile";
@@ -31,14 +21,3 @@ export const P_M_REQUEST_STATUS_1 = "/dashboardx/P_M_RequestStatus1";
 export const P_M_SEND_HISTORY_1 = "/dashboardx/P_M_SendHistory1";
 export const P_M_SETTINGS_0 = "/dashboardx/P_M_Settings0";
 export const P_M_TODO_0 = "/dashboardx/P_M_Todo0";
-export const P_M_UPCOMINGS = "/dashboardx/P_M_Upcomings";
-export const POSTED_JOBS_5 = "/dashboardx/PostedJobs5";
-export const PROJECT_MANAGER_MESSAGES = "/dashboardx/ProjectManagerMessages";
-export const PROJECT_MANAGER_NOTIFICATIONS =
-  "/dashboardx/ProjectManagerNotifications";
-export const PROJECT_MANAGER_PROFILE = "/dashboardx/ProjectManagerProfile";
-export const PROJECT_MANAGER_UPCOMINGS = "/dashboardx/ProjectManagerUpcomings";
-export const PROJECT_MANAGER_ACTIVITY = "/dashboardx/ProjectMangaerActivity";
-export const TEAM_MEMBER_03 = "/dashboardx/teamMember03";
-export const TEAM_MEMBER_04 = "/dashboardx/teamMember04";
-export const TOTAL_EMPLOYEE_0 = "/dashboardx/TotalEmployee0";

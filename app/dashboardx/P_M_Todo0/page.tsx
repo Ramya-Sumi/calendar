@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enUS } from "date-fns/locale";
 import Link from "next/link";
-
+import axios from "axios";
+import GoogleIcon from "../../../public/image/google-meet-logo.png";
 import {
   Calendar,
   momentLocalizer,
@@ -104,8 +105,10 @@ export default function P_M_Todo0() {
     setActiveEventModal(event);
     setPosition({ x: e.clientX, y: e.clientY });
   };
-
+  
+  
   const EventDetailModal = () => {
+    
     return (
       <>
         {activeEventModal?.title && (
@@ -131,17 +134,113 @@ export default function P_M_Todo0() {
   };
 
   // Custom Event Component
-  const CustomEvent = ({ event }: any) => {
+  
+  const CustomEvent = ({ event, defaultView }) => {
+    console.log("Available Views:", defaultView);
+    const [loading, setLoading] = useState(true);
+  const [apidata, setApidata] = useState(null); // Change to null for a single object
+
+  const fetchapi = async () => {
+    const apiurl = "http://52.35.66.255:8000/calendar_app/api/calendar_meeting?id=3";
+    try {
+      const response = await axios.get(apiurl);
+      console.log('API Response:', response.data);
+      setApidata(response.data); // Set the data directly
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchapi();
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+  
+    // Add suffix to the day (st, nd, rd, th)
+    const suffix = (day) => {
+      if (day > 3 && day < 21) return 'th'; // 4-20
+      switch (day % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+      }
+    };
+  
+    return `${day}${suffix(day)} ${month} ${year}`;
+  };
+  
+  const formatInterviewTimeRange = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    
+    const startHours = startDate.getHours();
+    const endHours = endDate.getHours();
+    
+    const startFormatted = `${startHours % 12 || 12} ${startHours >= 12 ? 'p.m.' : 'a.m.'}`;
+    const endFormatted = `${endHours % 12 || 12} ${endHours >= 12 ? 'p.m.' : 'a.m.'}`;
+    
+    return `${startFormatted} - ${endFormatted}`;
+  };
+
     return (
       <>
-        <div className="calendarTopSection">
+  {loading ? (
+  <p>Loading...</p>
+  ) : apidata ? (
+  <div>
+  {defaultView === "day" ? (
+  <div className="calendarTopSection">
+  <div className="content">
+    <ul>
+      <li>Interview with: {apidata.job_id.jobRequest_createdBy.firstName} {apidata.job_id.jobRequest_createdBy.lastName}</li>
+      <li>Position: {apidata.job_id.jobRequest_Role}</li>
+      <li>Created by: {apidata.user_det.handled_by.firstName} {apidata.user_det.handled_by.lastName}</li>
+      <li>Interview Date: {formatDate(event.start)}</li>
+      <li>Interview Time: {formatInterviewTimeRange(event.start, event.end)}</li>
+      <li>Interview Via: Google Meet</li>
+    </ul>
+  </div>
+  <div className="button-container">
+    <span>
+      <img src="/image/google-meet-logo.png" alt="Google Meet" width="200" height="200" style={{ marginTop: '5px' }} />
+    </span>
+    <button className="join-button" onClick={() => window.open(apidata.link, "_blank")}>
+      Join
+    </button>
+  </div>
+  </div>
+  ) : (
+  <div className="calendarTopSections top-[450px] left-[200px]">
+  <ul>
+    <li className="text-[12px] py-1">Position: {apidata.job_id.jobRequest_Role}</li>
+    <li className="text-[12px] py-1">Interviewer: {apidata.user_det.handled_by.firstName} {apidata.user_det.handled_by.lastName}</li>
+    <li className="text-[12px] py-1">Time: {formatInterviewTimeRange(event.start, event.end)}</li>
+    <li className="text-[12px] py-1">Via: Google Voice</li>
+  </ul>
+  </div>
+  )}
+  </div>
+  ) : (
+  <p>No data available</p>
+  )}
+
+       {/* <div className="calendarTopSection">
           <ul>
             <li className="text-[12px] py-1">Python Developer</li>
             <li className="text-[12px] py-1">Interviewer: Geetha</li>
             <li className="text-[12px] py-1">Time : 10 - 11 A.M</li>
             <li className="text-[12px] py-1">Via : Google Voice</li>
           </ul>
-        </div>
+        </div> */}
+        
         {/* <div className="shadow bg-white" style={{ position: "relative" }}>
           <strong className="text-black">{event.title}</strong>
           <p>{event.start.toLocaleString()}</p>
@@ -150,6 +249,7 @@ export default function P_M_Todo0() {
       </>
     );
   };
+  const [currentView, setCurrentView] = useState("day"); // Default view
 
   return (
     <section className="">
@@ -215,7 +315,16 @@ export default function P_M_Todo0() {
                 className="d-none d-lg-block "
                 style={{ width: "100%", position: "relative" }}
               >
-
+              
+               
+              {/* <div className="calendarTopSection top-[450px] left-[200px]">
+                  <ul>
+                    <li className="text-[12px] py-1">Python Developer</li>
+                    <li className="text-[12px] py-1">Interviewer: Geetha</li>
+                    <li className="text-[12px] py-1">Time : 10 - 11 A.M</li>
+                    <li className="text-[12px] py-1">Via : Google Voice</li>
+                  </ul>
+                </div> */}
                 {/* <div className="calendarTopSection top-[250px] left-[100px]">
                   <ul>
                     <li className="text-[12px] py-1">Python Developer</li>
@@ -269,7 +378,7 @@ export default function P_M_Todo0() {
                     <li className="text-[12px] py-1">Time : 10 - 11 A.M</li>
                     <li className="text-[12px] py-1">Via : Google Voice</li>
                   </ul>
-                </div> */}
+                 */}
                 <Calendar
                   className="TodoDataTable"
                   selectable
@@ -278,11 +387,13 @@ export default function P_M_Todo0() {
                   startAccessor="start"
                   endAccessor="end"
                   style={{ height: 600 }}
-                  defaultView={"week"}
-                  timeslots={4} // number of per section
+                  defaultView={currentView}
+                  timeslots={4}
                   step={15}
                   views={{ month: true, week: true, day: true }} // Show only month, week, and day views
-                  components={{ event: CustomEvent }}
+                  components={{
+                    event: (eventProps) => <CustomEvent {...eventProps}   defaultView={currentView}  />, // Pass views
+                  }}
                   formats={{
                     dayFormat: "EEEE", // day labels
                   }}

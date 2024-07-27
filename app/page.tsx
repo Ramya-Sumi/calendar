@@ -99,6 +99,7 @@ export default function Home() {
 
   const activeJobsData = dashboardData?.posted_job_list
   const inactiveJobsData = dashboardData?.posted_job_active_list
+  
 
   //tab end
   return (
