@@ -6,6 +6,7 @@
 .rbc-calendar {
   background-color: #fafbfc;
   padding: 10px;
+  height: 1000px !important;
 }
 
 .css-nbv3vr-MuiResponsiveChart-container {
@@ -39,80 +40,25 @@
   border-color: var(--royalBlue) !important;
   box-shadow: none !important;
 }
-.calendarTopSection {
-  background-color: #f9f9f9; /* Light gray background */
-  border: 1px solid #dcdcdc; /* Light border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 15px; /* Spacing inside the section */
-  margin-bottom: 15px; /* Spacing between sections */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.calendarTopSection .content {
-  display: flex;
-  line-height: 33px;
-  font-family: 'Poppins-Medium';
-  flex-direction: column; /* Stack items vertically */
-  flex-grow: 1; /* Allow content to take available space */
-}
-
-.calendarTopSection .content ul {
-  list-style-type: none; /* Remove default bullet points */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
-}
-
-.calendarTopSection .content li {
-  font-size: 14px; /* Font size for list items */
-  margin-bottom: 5px; /* Space between list items */
-}
 
 .calendarTopSection {
-  width:60%;
-  cursor: not-allowed;
-  display: flex; /* Flexbox for alignment */
-  align-items: center; /* Center vertically */
-  justify-content: flex-end; /* Align to the right */
-  margin-top: 10px; /* Space between content and button */
-}
-.button-container {
-  display: flex; /* Flexbox for alignment */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Align to the right */
-  margin-top: 10px; /* Space between content and button */
-}
-
-.calendarTopSection .join-button {
-  background-color: #0a66c2; /* Google Meet color */
-  color: white; /* Text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded button */
-  padding: 5px 10px; /* Padding for the button */
-  cursor: pointer; /* Pointer cursor on hover */
-}
-
-.calendarTopSection .join-button:hover {
-  background-color: #005b8c; /* Darker shade on hover */
-}
-
-.calendarTopSections {
   position: absolute;
   background: white;
   box-shadow: 0px 0px 10px 0px gray;
   padding: 10px;
   border-radius: 5px 0px 0px 5px;
-  font-family: 'Poppins-regular';
   border-left: 20px solid;
   border-color: var(--royalBlue);
   z-index: 333;
 }
 
-.calendarTopSections:hover {
+.calendarTopSection:hover {
   background-color: var(--royalBlue);
 }
-.calendarTopSections:hover li {
+.calendarTopSection:hover li {
   color: white;
 }
+
 
 .rbc-day-slot .rbc-event{
     min-height: 200px !important;
@@ -127,3 +73,74 @@
 .rbc-day-slot .rbc-event-label{
     display: none;
 }
+.no-data-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #777; /* Adjust color as needed */
+}
+
+.calendarTopSections {
+  position: absolute;
+  background: white;
+  box-shadow: 0px 0px 10px 0px gray;
+  padding: 10px;
+  border-radius: 5px 0px 0px 5px;
+  font-family: 'Poppins-regular';
+  border-left: 20px solid;
+  border-color: var(--royalBlue);
+  z-index: 333;
+}
+.calendarTopSections {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #dcdcdc; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px; /* Spacing inside the section */
+  margin-bottom: 15px; /* Spacing between sections */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.calendarTopSections .contents {
+  display: flex;
+  line-height: 33px;
+  font-family: 'Poppins-Medium';
+  flex-direction: column; /* Stack items vertically */
+  flex-grow: 1; /* Allow content to take available space */
+}
+
+.calendarTopSections .contents ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.calendarTopSections .contents li {
+  font-size: 14px; /* Font size for list items */
+  margin-bottom: 5px; /* Space between list items */
+}
+.calendarTopSections {
+  width:60%;
+  cursor: not-allowed;
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center vertically */
+  justify-content: flex-end; /* Align to the right */
+  margin-top: 10px; /* Space between content and button */
+}
+.button-container {
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Align to the right */
+  margin-top: 10px; /* Space between content and button */
+}
+
+.calendarTopSections .join-button {
+  background-color: #0a66c2; /* Google Meet color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded button */
+  padding: 5px 10px; /* Padding for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+
+
